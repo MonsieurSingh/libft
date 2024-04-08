@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_reverse_fun.c                             :+:      :+:    :+:   */
+/*   ft_list_reverse_fun.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Teghjyot <tesingh@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,7 +18,6 @@ void ft_list_reverse_fun(t_list *begin_list)
 	int		i;
 	int		j;
 	t_list	*current;
-	void	*temp;
 
 	list_size = (int)ft_list_size(begin_list);
 	i = 0;

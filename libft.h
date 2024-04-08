@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teghjyot <tesingh@student.42.fr>           +#+  +:+       +#+        */
+/*   By: tesingh <tesingh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:35:30 by Teghjyot          #+#    #+#             */
-/*   Updated: 2024/03/06 15:35:41 by Teghjyot         ###   ########.fr       */
+/*   Updated: 2024/04/02 02:40:18 by tesingh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 typedef struct s_list
 {
-	void			*content;
 	struct s_list	*next;
+    void            *data;
 }				t_list;
 
 int		ft_isalpha(int c);
@@ -55,12 +55,43 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+size_t	ft_putchar_fd(char c, int fd);
+size_t	ft_putstr_fd(char *s, int fd);
+size_t	ft_putendl_fd(char *s, int fd);
+size_t	ft_putnbr_fd(long long n, int fd);
+size_t	ft_putnbr_base_fd(unsigned long nbr, char *base, int fd);
 
-t_list	*ft_lstnew(void *content);
+t_list	*ft_create_elem(void *data);
+void    ft_list_push_front(t_list **begin_list, void *data);
+size_t  ft_list_size(t_list *begin_list);
+t_list  *ft_list_last(t_list *begin_list);
+void	ft_list_push_back(t_list **begin_list, void *data);
+t_list	*ft_list_push_strs(size_t size, char **strs);
+void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *));
+t_list	*ft_list_at(t_list *begin_list, size_t nbr);
+void	ft_list_reverse(t_list **begin_list);
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *));
+void	ft_list_foreach_if(t_list *begin_list,
+						void (*f)(void *),
+						void *data_ref,
+						int (*cmp)(void *, void *));
+t_list	*ft_list_find(t_list *begin_list,
+					 void *data_ref,
+					 int (*cmp)(void *, void *));
+void	ft_list_remove_if(t_list **begin_list,
+						  void *data_ref,
+						  int (*cmp)(void *, void *),
+						  void (*free_fct)(void *));
+void	ft_list_merge(t_list **begin_list1, t_list *begin_list2);
+void	ft_list_swap(t_list *list);
+void	ft_list_sort(t_list **begin_list, int (*cmp)(void *, void *));
+void	ft_list_reverse_fun(t_list *begin_list);
+void	ft_sorted_list_insert(t_list **begin_list,
+							  void *data,
+							  int (*cmp)(void *, void *));
+void	ft_sorted_list_merge(t_list **begin_list1,
+							 t_list *begin_list2,
+							 int (*cmp)(void *, void *));
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);

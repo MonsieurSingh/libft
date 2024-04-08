@@ -1,8 +1,26 @@
-//
-//  ft_list_size.c
-//  ft
-//
-//  Created by TeeJay on 8/4/2024.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_list_size.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Teghjyot <tesingh@student.42.fr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 15:37:56 by Teghjyot          #+#    #+#             */
+/*   Updated: 2024/03/06 15:37:56 by Teghjyot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
+
+size_t  ft_list_size(t_list *begin_list)
+{
+    size_t  count;
+
+	count = 0;
+    while (begin_list)
+    {
+		count++;
+        begin_list = begin_list->next;
+    }
+    return (count);
+}
