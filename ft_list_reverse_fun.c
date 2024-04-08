@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_list_reverse_fun.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Teghjyot <tesingh@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,26 @@
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void ft_list_reverse_fun(t_list *begin_list)
 {
-	t_list	*list;
+	int		list_size;
+	int		i;
+	int		j;
+	t_list	*current;
+	void	*temp;
 
-	list = (t_list *)malloc(sizeof(t_list));
-	if (!list)
-		return (NULL);
-	list->content = content;
-	list->next = NULL;
-	return (list);
+	list_size = (int)ft_list_size(begin_list);
+	i = 0;
+	while (i < (list_size - 1))
+	{
+		j = i;
+		current = begin_list;
+		while (current && current->next && j < (list_size - 1))
+		{
+			ft_list_swap(current);
+			current = current->next;
+			j++;
+		}
+		i++;
+	}
 }
